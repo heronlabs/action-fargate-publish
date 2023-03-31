@@ -43,8 +43,8 @@ runs:
     - name: '[PUBLISH] | Publish new deployment'
       shell: bash
       run: |
-         chmod +x ./publish-fargate-action/core/publish-fargate.sh
-         ./publish-fargate-action/core/publish-fargate.sh
+        chmod +x ./publish-fargate-action/core/publish-fargate.sh
+        ./publish-fargate-action/core/publish-fargate.sh
       env:
         CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
         SERVICE_NAME:  ${{ inputs.SERVICE_NAME }}
