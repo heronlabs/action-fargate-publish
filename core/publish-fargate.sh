@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 aws ecs update-service \
   --cluster ${CLUSTER_NAME} \
