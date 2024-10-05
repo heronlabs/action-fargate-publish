@@ -1,6 +1,6 @@
 #!/bin/bash
 
 aws ecs update-service \
-  --cluster ${CLUSTER_NAME} \
-  --service ${SERVICE_NAME} \
-  --force-new-deployment
+--cluster ${CLUSTER_NAME} \
+--service ${SERVICE_NAME} \
+--force-new-deployment

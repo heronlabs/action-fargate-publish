@@ -31,7 +31,7 @@ runs:
   using: composite
   steps:
     - name: '[PUBLISH] | Configure AWS Credentials'
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-region: ${{ inputs.AWS_REGION }}
         aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
@@ -47,4 +47,4 @@ runs:
         ./publish-fargate-action/core/publish-fargate.sh
       env:
         CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
-        SERVICE_NAME:  ${{ inputs.SERVICE_NAME }}
+        SERVICE_NAME: ${{ inputs.SERVICE_NAME }}
