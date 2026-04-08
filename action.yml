@@ -2,41 +2,39 @@ name: publish-fargate-action
 
 author: Heron Labs
 
-description: Publish Fargate
+description: Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
 
 inputs:
   AWS_ROLE_TO_ASSUME:
-    description: inputs.AWS_ROLE_TO_ASSUME
+    description: ARN of the IAM role to assume via OIDC.
     required: true
   AWS_REGION:
-    description: inputs.AWS_REGION
+    description: AWS region where the ECS cluster lives.
     required: true
   AWS_ROLE_DURATION_SECONDS:
-    description: inputs.AWS_ROLE_DURATION_SECONDS
+    description: Duration in seconds for the assumed role session.
     required: true
   CLUSTER_NAME:
-    description: inputs.CLUSTER_NAME
+    description: Name of the ECS cluster hosting the service.
     required: true
   SERVICE_NAME:
-    description: inputs.SERVICE_NAME
+    description: Name of the ECS service to redeploy.
     required: true
 
 runs:
   using: composite
   steps:
-    - name: '[PUBLISH] | Configure AWS Credentials'
-      uses: aws-actions/configure-aws-credentials@v5
+    - name: 'Configure AWS Credentials'
+      uses: aws-actions/configure-aws-credentials@v6
       with:
         aws-region: ${{ inputs.AWS_REGION }}
         role-to-assume: ${{ inputs.AWS_ROLE_TO_ASSUME }}
         role-duration-seconds: ${{ inputs.AWS_ROLE_DURATION_SECONDS }}
         role-session-name: publish-fargate-action-session
 
-    - name: '[PUBLISH] | Publish new deployment'
+    - name: 'Force new deployment'
       shell: bash
-      run: |
-        chmod +x ./publish-fargate-action/core/publish-fargate.sh
-        ./publish-fargate-action/core/publish-fargate.sh
+      run: bash ${{ github.action_path }}/core/publish-fargate.sh
       env:
         CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
         SERVICE_NAME: ${{ inputs.SERVICE_NAME }}
