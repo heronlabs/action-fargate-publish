@@ -1,0 +1,11 @@
+{
+  "name": "publish-fargate-action",
+  "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heronlabs/publish-fargate-action.git"
+  },
+  "author": "Heron Labs",
+  "license": "MIT"
+}
