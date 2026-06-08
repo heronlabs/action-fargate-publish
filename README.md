@@ -76,7 +76,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Rolling deploy
-        uses: heronlabs/publish-fargate-action@v2
+        uses: heronlabs/action-fargate-publish@v2
         with:
           AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_ARN }}
           AWS_REGION: us-east-1
@@ -92,7 +92,3 @@ jobs:
 ## License
 
 MIT
-
----
-
-See also: [`workloads/docs/actions/publish-fargate-action.md`](https://github.com/heronlabs/workloads/blob/main/docs/actions/publish-fargate-action.md)
