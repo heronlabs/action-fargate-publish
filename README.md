@@ -1,6 +1,6 @@
 # Fargate Publish Action
 
-[![CI](https://github.com/heronlabs/action-fargate-publish/actions/workflows/ci.yml/badge.svg)](https://github.com/heronlabs/action-fargate-publish/actions/workflows/ci.yml)
+[![CI](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml)
 
 > Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
 
