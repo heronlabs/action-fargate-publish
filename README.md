@@ -1,10 +1,20 @@
-# Fargate Publish Action
+# 🥁 action-fargate-publish — Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
 
 [![CI](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml)
 
 > Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
 
 Authenticates to AWS via OIDC and runs `aws ecs update-service --force-new-deployment`. Use it after pushing a new image so the service picks up the tag its task definition references.
+
+## Contents
+
+- [Usage](#usage)
+- [Inputs](#inputs)
+- [Outputs](#outputs)
+- [Permissions](#permissions)
+- [How it works](#how-it-works)
+- [Notes](#notes)
+- [License](#license)
 
 ## Usage
 
@@ -23,7 +33,7 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Rolling deploy
         uses: heronlabs/action-fargate-publish@v3
@@ -75,6 +85,13 @@ The assumed role must allow updating the target service:
 ```
 
 </details>
+
+## How it works
+
+Composite action with a single shell script (`core/publish-fargate.sh`):
+
+1. **Validate inputs** — `CLUSTER_NAME` and `SERVICE_NAME` must be set; the script fails fast with an error if either is missing.
+2. **Force new deployment** — runs `aws ecs update-service --cluster CLUSTER_NAME --service SERVICE_NAME --force-new-deployment` to trigger AWS ECS to redeploy the service with the image tag its current task definition references.
 
 ## Notes
 

@@ -11,7 +11,7 @@ setup() {
 run_action() {
   aws_log="$BATS_TEST_TMPDIR/aws.log"
   : >"$aws_log"
-  PATH="$BATS_TEST_DIRNAME:$PATH" AWS_LOG="$aws_log" run env "$@" bash "$SCRIPT"
+  PATH="$BATS_TEST_DIRNAME/__mocks__:$PATH" AWS_LOG="$aws_log" run env "$@" bash "$SCRIPT"
 }
 
 @test "happy: exit 0 (green)" {
