@@ -1,4 +1,4 @@
-# 🥁 action-fargate-publish — Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
+# 🚀 action-fargate-publish — Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
 
 [![CI](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml)
 
