@@ -89,17 +89,23 @@ The assumed role must allow updating the target service:
 
 ## Architecture
 
-```mermaid
-graph TD
-    A[action.yml] --> B[core/publish-fargate.sh]
-    B --> C[tests/action.bats]
-    C --> D[Makefile]
-    D --> E[version.txt]
+Bash shell script wrapped by a composite GitHub Action.
+
+```
+├── action.yml                    # Composite action definition
+├── core/
+│   └── publish.sh                # CLI entry point — Fargate service update
+├── tests/
+│   ├── __mocks__/
+│   │   └── aws                   # AWS CLI stub (records invocations)
+│   └── action.bats               # BATS tests
+├── Makefile                      # test (bats) + lint (shellcheck)
+└── version.txt                   # Current version
 ```
 
 ## How it works
 
-Composite action with a single shell script (`core/publish-fargate.sh`):
+Composite action with a single shell script (`core/publish.sh`):
 
 1. **Validate inputs** — `CLUSTER_NAME` and `SERVICE_NAME` must be set; the script fails fast with an error if either is missing.
 2. **Force new deployment** — runs `aws ecs update-service --cluster CLUSTER_NAME --service SERVICE_NAME --force-new-deployment` to trigger AWS ECS to redeploy the service with the image tag its current task definition references.

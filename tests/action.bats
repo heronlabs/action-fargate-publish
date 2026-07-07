@@ -2,7 +2,7 @@
 
 setup() {
   unset CLUSTER_NAME SERVICE_NAME
-  SCRIPT="$BATS_TEST_DIRNAME/../core/publish-fargate.sh"
+  SCRIPT="$BATS_TEST_DIRNAME/../core/publish.sh"
 }
 
 # Run the action script with the aws stub on PATH.

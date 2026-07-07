@@ -34,7 +34,7 @@ runs:
 
     - name: 'Force new deployment'
       shell: bash
-      run: bash ${{ github.action_path }}/core/publish-fargate.sh
+      run: bash ${{ github.action_path }}/core/publish.sh
       env:
         CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
         SERVICE_NAME: ${{ inputs.SERVICE_NAME }}
