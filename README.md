@@ -12,6 +12,7 @@ Authenticates to AWS via OIDC and runs `aws ecs update-service --force-new-deplo
 - [Inputs](#inputs)
 - [Outputs](#outputs)
 - [Permissions](#permissions)
+- [Architecture](#architecture)
 - [How it works](#how-it-works)
 - [Notes](#notes)
 - [License](#license)
@@ -85,6 +86,16 @@ The assumed role must allow updating the target service:
 ```
 
 </details>
+
+## Architecture
+
+```mermaid
+graph TD
+    A[action.yml] --> B[core/publish-fargate.sh]
+    B --> C[tests/action.bats]
+    C --> D[Makefile]
+    D --> E[version.txt]
+```
 
 ## How it works
 
