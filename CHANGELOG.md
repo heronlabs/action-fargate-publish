@@ -1,3 +1,9 @@
+## v3.0.10 (2026-07-07)
+
+### Documentation
+
+* docs: standardize README badges and add repo-specific CLAUDE.md (#19) (2990e9c49992164669d52faffe695a17286dd61c)
+
 ## v3.0.9 (2026-07-07)
 
 
