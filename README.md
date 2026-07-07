@@ -1,8 +1,10 @@
-# 🚀 action-fargate-publish — Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
+# 🚀 action-fargate-publish — Force ECS Fargate deployment
 
-[![CI](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml)
+[![CI][ci-badge]][ci-url]
+[![License: MIT][license-badge]][license-url]
+[![GitHub Marketplace][marketplace-badge]][marketplace-url]
 
-> Trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
+> **GitHub Action** to trigger a new ECS Fargate deployment by forcing a rolling update on an existing service.
 
 Authenticates to AWS via OIDC and runs `aws ecs update-service --force-new-deployment`. Use it after pushing a new image so the service picks up the tag its task definition references.
 
@@ -119,3 +121,10 @@ Composite action with a single shell script (`core/publish.sh`):
 ## License
 
 MIT
+
+[ci-badge]: https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml/badge.svg
+[ci-url]: https://github.com/heronlabs/action-fargate-publish/actions/workflows/continuous-integration.yml
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: ./LICENSE
+[marketplace-badge]: https://img.shields.io/badge/GitHub-Marketplace-green.svg
+[marketplace-url]: https://github.com/marketplace/actions/action-fargate-publish
