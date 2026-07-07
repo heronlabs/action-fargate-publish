@@ -25,16 +25,16 @@ runs:
   using: composite
   steps:
     - name: 'Configure AWS Credentials'
-      uses: aws-actions/configure-aws-credentials@e7f100cf4c008499ea8adda475de1042d6975c7b # v6.2.0
+      uses: aws-actions/configure-aws-credentials@254c19bd240aabef8777f48595e9d2d7b972184b # v6.2.1
       with:
         aws-region: ${{ inputs.AWS_REGION }}
         role-to-assume: ${{ inputs.AWS_ROLE_TO_ASSUME }}
         role-duration-seconds: ${{ inputs.AWS_ROLE_DURATION_SECONDS }}
         role-session-name: action-fargate-publish-session
 
-    - name: 'Force new deployment'
+    - name: 'Publish to Fargate'
       shell: bash
-      run: bash ${{ github.action_path }}/core/publish-fargate.sh
+      run: bash ${{ github.action_path }}/core/publish.sh
       env:
         CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
         SERVICE_NAME: ${{ inputs.SERVICE_NAME }}
